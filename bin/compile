@@ -31,7 +31,7 @@ function indent() {
   esac
 }
 
-PACKAGES="ca-certificates fonts-liberation gconf-service libappindicator1 libasound2 libatk1.0-0 libc6 libcairo-gobject2 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libgtk2.0-0 libnspr4 libnss3 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxinerama1 libxrandr2 libxrender1 libxss1 libxtst6 lsb-release wget xdg-utils"
+PACKAGES="ca-certificates fonts-liberation gconf-service libappindicator1 libasound2 libatk1.0-0 libc6 libcairo-gobject2 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libgtk2.0-0 libnspr4 libnss3 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxinerama1 libxrandr2 libxrender1 libxss1 libxtst6 lsb-release wget xdg-utils ipa-gothic-fonts xorg-x11-fonts-100dpi xorg-x11-fonts-75dpi xorg-x11-utils xorg-x11-fonts-cyrillic xorg-x11-fonts-Type1 xorg-x11-fonts-misc"
 DEBIAN_FRONTEND=noninteractive
 
 APT_CACHE_DIR="$CACHE_DIR/apt/cache"
@@ -54,9 +54,6 @@ for DEB in $(ls -1 $APT_CACHE_DIR/archives/*.deb); do
   topic "Installing $(basename $DEB)"
   dpkg -x $DEB $BUILD_DIR/.apt/
 done
-
-topic "Fetching fonts"
-apt-get install -y -d install --reinstall --allow-downgrades --allow-remove-essential ipa-gothic-fonts xorg-x11-fonts-100dpi xorg-x11-fonts-75dpi xorg-x11-utils xorg-x11-fonts-cyrillic xorg-x11-fonts-Type1 xorg-x11-fonts-misc
 
 topic "Writing profile script"
 mkdir -p $BUILD_DIR/.profile.d
